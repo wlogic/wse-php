@@ -172,7 +172,7 @@ class WSSESoap
 
         $token->setAttribute('EncodingType', 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary');
         $token->setAttributeNS(self::WSUNS, self::WSUPFX.':Id', XMLSecurityDSig::generate_GUID());
-        $token->setAttribute('ValueType', 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3');
+        $token->setAttribute('ValueType', 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509PKIPathv1');
          
         return $token;
     }
@@ -197,7 +197,7 @@ class WSSESoap
             $tokenRef = $this->soapDoc->createElementNS(self::WSSENS, self::WSSEPFX.':SecurityTokenReference');
             $keyInfo->appendChild($tokenRef);
             $reference = $this->soapDoc->createElementNS(self::WSSENS, self::WSSEPFX.':Reference');
-            $reference->setAttribute('ValueType', 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509v3');
+            $reference->setAttribute('ValueType', 'http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-x509-token-profile-1.0#X509PKIPathv1');
             $reference->setAttribute("URI", $tokenURI);
             $tokenRef->appendChild($reference);
         } else {
